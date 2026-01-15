@@ -1025,44 +1025,25 @@
             const originalButtonText = submitButton.innerHTML;
 
             // Get form data
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                subject: document.getElementById('subject').value.trim(),
-                message: document.getElementById('message').value.trim()
-            };
+            const formData = new FormData(contactForm);
 
             // Show loading state
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
 
-            // Create URL encoded data for Netlify
-            const urlEncodedData = new URLSearchParams(formData).toString();
-            // Add form-name for Netlify
-            const body = new URLSearchParams({
-                "form-name": "contact",
-                ...formData
-            }).toString();
-
             try {
-                // IMPORTANT: Replace this URL with your Render backend URL after deployment
-                // Example: 'https://ronald-portfolio-backend.onrender.com'
-                const BACKEND_URL = 'https://YOUR_RENDER_URL.onrender.com';
-
-                const response = await fetch(`${BACKEND_URL}/api/contact`, {
+                // Submit to Netlify Forms
+                const response = await fetch('/', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
                 });
 
-                const data = await response.json();
-                if (response.ok && data.success) {
-                    showMessage(data.message || 'Message sent successfully! I will get back to you soon.', true);
+                if (response.ok) {
+                    showMessage('Message sent successfully! I will get back to you soon.', true);
                     contactForm.reset();
                 } else {
-                    showMessage(data.message || 'Failed to send message. Please try again.', false);
+                    showMessage('Failed to send message. Please try again.', false);
                 }
             } catch (error) {
                 console.error('Error:', error);
