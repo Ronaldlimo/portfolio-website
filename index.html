@@ -193,6 +193,14 @@
 </head>
 
 <body class="font-sans bg-light text-dark noise">
+    <!-- Hidden form for Netlify detection (required for AJAX form submissions) -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="subject" />
+        <textarea name="message"></textarea>
+    </form>
+
     <!-- Floating Blobs -->
     <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div class="absolute w-64 h-64 rounded-full bg-primary blob top-1/4 left-1/4"></div>
@@ -782,8 +790,13 @@
                 <div class="glass p-8 rounded-2xl shadow-sm">
                     <h3 class="text-2xl font-display font-bold mb-6">Send Me a Message</h3>
 
-                    <form class="space-y-6" id="whatsapp-form" name="contact" method="POST" data-netlify="true">
-                        <!-- Add hidden input for Netlify -->
+                    <form class="space-y-6" id="whatsapp-form" name="contact" method="POST" data-netlify="true"
+                        netlify-honeypot="bot-field">
+                        <!-- Honeypot field for spam protection -->
+                        <p class="hidden">
+                            <label>Don't fill this out: <input name="bot-field" /></label>
+                        </p>
+                        <!-- Hidden input for Netlify -->
                         <input type="hidden" name="form-name" value="contact" />
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
