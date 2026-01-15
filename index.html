@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio | Ronald Kiplimo</title>
+    <meta name="description" content="Professional portfolio showcasing my work and skills">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Devicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+    <!-- Protocol Warning Script Removed -->
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3B82F6",
+                        secondary: "#1E40AF",
+                        accent: "#10B981",
+                        dark: "#1F2937",
+                        light: "#F9FAFB",
+                        glass: "rgba(255, 255, 255, 0.1)"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient': 'gradient 8s ease infinite',
+                        'blob': 'blob 7s infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        gradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E\")"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(-45deg, #3B82F6, #10B981, #3B82F6);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .noise::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .blob {
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: blob 7s infinite;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: translateY(-5px);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-overlay {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        @keyframes wave {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            10% {
+                transform: rotate(14deg);
+            }
+
+            20% {
+                transform: rotate(-8deg);
+            }
+
+            30% {
+                transform: rotate(14deg);
+            }
+
+            40% {
+                transform: rotate(-4deg);
+            }
+
+            50% {
+                transform: rotate(10deg);
+            }
+
+            60% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .wave {
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-light text-dark noise">
+    <!-- Floating Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute w-64 h-64 rounded-full bg-primary blob top-1/4 left-1/4"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-accent blob bottom-1/4 right-1/4 animation-delay-2000"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed w-full glass shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-display font-bold gradient-text flex items-center">
+                <span class="mr-2">RK</span>
+                <span class="hidden sm:inline">Portfolio</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium hover:text-primary transition-colors relative group">
+                    Home
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#about" class="font-medium hover:text-primary transition-colors relative group">
+                    About
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#work" class="font-medium hover:text-primary transition-colors relative group">
+                    Work
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors relative group">
+                    Contact
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#contact"
+                    class="hidden sm:block px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-colors">
+                    Hire Me
+                </a>
+                <button class="md:hidden text-xl" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white/95 backdrop-blur-lg w-full px-6 py-4 shadow-md" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home"
+                    class="font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Home</a>
+                <a href="#about"
+                    class="font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">About</a>
+                <a href="#work"
+                    class="font-medium hover:text-primary transition-colors py-2 border-b border-gray-100">Work</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors py-2">Contact</a>
+                <a href="#contact"
+                    class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-colors text-center mt-2">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-50"></div>
+        <div class="container mx-auto px-6 py-12 md:py-24 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <div class="inline-block px-3 py-1 bg-white/80 rounded-full text-sm font-medium mb-6 shadow-sm">
+                        <span class="text-primary">👋 Hello! I'm Ronald</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-display font-bold mb-6 leading-tight">
+                        Crafting Digital <span class="gradient-text">Experiences</span> That Inspire
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-medium mb-6 text-gray-600">
+                        Graphics Designer & Creative Professional
+                    </h2>
+                    <p class="text-lg mb-8 text-gray-700 max-w-lg">
+                        I blend aesthetics with functionality to create visually stunning designs that captivate
+                        audiences and drive business growth.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#work"
+                            class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-colors flex items-center">
+                            <i class="fas fa-eye mr-2"></i> View My Work
+                        </a>
+                        <a href="#contact"
+                            class="px-6 py-3 border-2 border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Contact Me
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg"
+                                class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                                class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg"
+                                class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            <p>Trusted by clients worldwide</p>
+                            <div class="flex items-center">
+                                <div class="flex">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <span class="ml-1">5.0 (42 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-slide-up relative">
+                    <div class="relative max-w-md mx-auto">
+                        <img src="1.jpg" alt="Profile image"
+                            class="w-full rounded-3xl shadow-2xl border-8 border-white/80 relative z-10"
+                            loading="lazy" />
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-2xl -z-10"></div>
+                        <div class="absolute -top-6 -left-6 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
+                    </div>
+                    <div class="mt-8 grid grid-cols-3 gap-4 max-w-md mx-auto">
+                        <div class="glass p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-primary">4+</div>
+                            <div class="text-sm text-gray-600">Years Exp.</div>
+                        </div>
+                        <div class="glass p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-primary">50+</div>
+                            <div class="text-sm text-gray-600">Projects</div>
+                        </div>
+                        <div class="glass p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-primary">100%</div>
+                            <div class="text-sm text-gray-600">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-12 bg-white/80 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <p class="text-gray-500 uppercase tracking-wider text-sm">Trusted By</p>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <img src="https://img.kilimall.com/c/h5/icon_164_x3.png?x-image-process=image/format,webp"
+                    class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                <img src="https://prismmax.co.ke/images/prismlogo.png"
+                    class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                <img src="https://kitalisuppliersltd.com/public/uploads/20240622/385af273ceabc0c54c33fec9c1b60d06.png"
+                    class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                <img src="https://via.placeholder.com/120x40?text=Client+4"
+                    class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+                <img src="https://www.kenyachamber.or.ke/wp-content/uploads/header-kncci-logo.png"
+                    class="h-8 md:h-10 grayscale hover:grayscale-0 transition-all">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute -right-32 -top-32 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                <div class="lg:col-span-2 order-2 lg:order-1">
+                    <h3 class="text-2xl font-display font-bold mb-6">Who I Am</h3>
+                    <p class="text-gray-700 mb-6">
+                        I'm Ronald Kiplimo, a passionate creative professional with 4+ years of experience in Graphics
+                        Design & UI/UX. I specialize in creating impactful digital experiences that combine aesthetics
+                        with functionality to deliver exceptional results.
+                    </p>
+                    <p class="text-gray-700 mb-8">
+                        My approach is rooted in understanding both user needs and business objectives. I believe great
+                        design solves problems while creating emotional connections. Every pixel I place is intentional,
+                        every interaction carefully considered.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="skill-card p-4 rounded-xl border border-gray-100 hover:shadow-md transition-all">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 skill-icon transition-transform">
+                                <i class="fas fa-paint-brush text-primary text-xl"></i>
+                            </div>
+                            <h4 class="font-display font-bold mb-2">UI/UX Design</h4>
+                            <p class="text-gray-600 text-sm">Creating intuitive interfaces with exceptional user
+                                experiences</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-xl border border-gray-100 hover:shadow-md transition-all">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 skill-icon transition-transform">
+                                <i class="fas fa-code text-primary text-xl"></i>
+                            </div>
+                            <h4 class="font-display font-bold mb-2">Web Development</h4>
+                            <p class="text-gray-600 text-sm">Building responsive, performant websites and applications
+                            </p>
+                        </div>
+                        <div class="skill-card p-4 rounded-xl border border-gray-100 hover:shadow-md transition-all">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 skill-icon transition-transform">
+                                <i class="fas fa-vector-square text-primary text-xl"></i>
+                            </div>
+                            <h4 class="font-display font-bold mb-2">Brand Identity</h4>
+                            <p class="text-gray-600 text-sm">Crafting memorable visual identities that tell your story
+                            </p>
+                        </div>
+                        <div class="skill-card p-4 rounded-xl border border-gray-100 hover:shadow-md transition-all">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 skill-icon transition-transform">
+                                <i class="fas fa-chart-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="font-display font-bold mb-2">Digital Strategy</h4>
+                            <p class="text-gray-600 text-sm">Planning effective digital solutions for business growth
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://drive.google.com/file/d/1gYgkZ-fmQvMNEY_bbpRm4mnxoXT28fp-/view?usp=sharing"
+                            class="px-4 py-2 bg-primary/10 text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors inline-flex items-center"
+                            target="_blank">
+                            <i class="fas fa-file-alt mr-2"></i> View CV
+                        </a>
+                        <a href="#contact"
+                            class="px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors inline-flex items-center">
+                            <i class="fas fa-comment-dots mr-2"></i> Let's Talk
+                        </a>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="relative">
+                        <img src="https://www.nimextranjeria.com/wp-content/uploads/2023/12/visa-estudiante-para-trabajar-espana.webp"
+                            alt="About me image" class="w-full rounded-2xl shadow-lg relative z-10" loading="lazy" />
+                        <div
+                            class="absolute -bottom-6 -right-6 w-full h-full border-2 border-primary/30 rounded-2xl -z-10">
+                        </div>
+                    </div>
+                    <div class="mt-8 glass p-6 rounded-xl shadow-sm">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-trophy text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Award Winning</h4>
+                                <p class="text-sm text-gray-600">Recognized for design excellence</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-certificate text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Certified Professional</h4>
+                                <p class="text-sm text-gray-600">Adobe Certified Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">My Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-photoshop-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">Photoshop</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-illustrator-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">Illustrator</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-figma-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">Figma</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-xd-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">Adobe XD</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-html5-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">HTML5</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item p-6 rounded-xl bg-white shadow-sm hover:shadow-md transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="devicon-css3-plain colored text-3xl"></i>
+                    </div>
+                    <h4 class="font-medium">CSS3</h4>
+                    <div class="w-full bg-gray-200 rounded-full h-1.5 mt-2">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Portfolio Section -->
+    <section id="work" class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute -left-32 -bottom-32 w-64 h-64 rounded-full bg-accent/10 blur-3xl"></div>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Featured Work</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    A curated selection of my recent projects. Each one was carefully crafted to meet specific client
+                    needs and deliver exceptional results.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all relative">
+                    <div class="overflow-hidden h-64">
+                        <img src="commerce.jpg" alt="Project 1"
+                            class="w-full h-full object-cover project-image transition-transform duration-500"
+                            loading="lazy" />
+                    </div>
+                    <div class="absolute inset-0 flex items-end p-6 project-overlay">
+                        <div>
+                            <div class="inline-block px-3 py-1 bg-white rounded-full text-xs font-medium mb-2">Web
+                                Design</div>
+                            <h3 class="text-xl font-display font-bold text-white mb-2">E-commerce Platform</h3>
+                            <p class="text-white/80 text-sm mb-4">
+                                Modern e-commerce solution with intuitive UX and beautiful UI.
+                            </p>
+                            <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all relative">
+                    <div class="overflow-hidden h-64">
+                        <img src="Housecode.jpg" alt="Project 2"
+                            class="w-full h-full object-cover project-image transition-transform duration-500"
+                            loading="lazy" />
+                    </div>
+                    <div class="absolute inset-0 flex items-end p-6 project-overlay">
+                        <div>
+                            <div class="inline-block px-3 py-1 bg-white rounded-full text-xs font-medium mb-2">Brand
+                                Identity</div>
+                            <h3 class="text-xl font-display font-bold text-white mb-2">Corporate Branding</h3>
+                            <p class="text-white/80 text-sm mb-4">
+                                Complete visual identity for a tech startup.
+                            </p>
+                            <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="project-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all relative">
+                    <div class="overflow-hidden h-64">
+                        <img src="Fitness.jpg" alt="Project 3"
+                            class="w-full h-full object-cover project-image transition-transform duration-500"
+                            loading="lazy" />
+                    </div>
+                    <div class="absolute inset-0 flex items-end p-6 project-overlay">
+                        <div>
+                            <div class="inline-block px-3 py-1 bg-white rounded-full text-xs font-medium mb-2">Mobile
+                                App</div>
+                            <h3 class="text-xl font-display font-bold text-white mb-2">Fitness Tracker</h3>
+                            <p class="text-black/80 text-sm mb-4">
+                                Health and wellness app with beautiful data visualization.
+                            </p>
+                            <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://drive.google.com/file/d/1UYFi-vYaj6TZ_pK1vIDZ8iRuRUsn_p9k/view" target="_blank"
+                    class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-colors inline-flex items-center">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Client Testimonials</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://prismmax.co.ke/images/team/marvyn.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Marvyn</h4>
+                            <p class="text-sm text-gray-600">CEO, prismmax.</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "Ronald transformed our brand identity completely. His attention to detail and creative vision
+                        resulted in a design that perfectly represents our company values."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://prismmax.co.ke/images/team/jerry.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Jerry</h4>
+                            <p class="text-sm text-gray-600">Marketing Director,kitalisuppliersltd</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "Working with Ronald was a game-changer for our digital presence. His UI/UX designs improved our
+                        conversion rates by 40% in just three months."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Emily Rodriguez</h4>
+                            <p class="text-sm text-gray-600">Founder, Creative Studio</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">
+                        "Ronald's ability to understand our vision and translate it into stunning visuals is
+                        unparalleled. He's our go-to designer for all major projects."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary/5 to-accent/5 relative overflow-hidden">
+        <div class="absolute -right-32 -bottom-32 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-6">
+                    Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="glass p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-display font-bold mb-6">Contact Information</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Email</h4>
+                                <a href="mailto:ronaldlimo23@gmail.com"
+                                    class="text-gray-600 hover:text-primary transition-colors">ronaldlimo23@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-phone-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Phone</h4>
+                                <a href="tel:+254704572650"
+                                    class="text-gray-600 hover:text-primary transition-colors">+254 704 572 650</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Location</h4>
+                                <p class="text-gray-600">Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <h4 class="font-medium mb-6">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
+                                <i class="fab fa-behance"></i>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full bg-white flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass p-8 rounded-2xl shadow-sm">
+                    <h3 class="text-2xl font-display font-bold mb-6">Send Me a Message</h3>
+
+                    <form class="space-y-6" id="whatsapp-form" name="contact" method="POST" data-netlify="true">
+                        <!-- Add hidden input for Netlify -->
+                        <input type="hidden" name="form-name" value="contact" />
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent input-field"
+                                    placeholder="Your name" name="name" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent input-field"
+                                    placeholder="Your email" name="email" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent input-field"
+                                placeholder="Subject" name="subject" required>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5"
+                                class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent input-field"
+                                placeholder="Your message" name="message" required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition-colors w-full flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Start Your Project?</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto text-white/90">
+                Let's collaborate to bring your ideas to life with stunning design and exceptional user experiences.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact"
+                    class="px-6 py-3 bg-white text-primary rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                    Get In Touch
+                </a>
+                <a href="#work"
+                    class="px-6 py-3 border-2 border-white text-white rounded-lg font-bold hover:bg-white/10 transition-colors">
+                    View My Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12 relative overflow-hidden">
+        <div class="absolute -left-32 -top-32 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <a href="#home" class="text-2xl font-display font-bold gradient-text inline-block mb-4">RK
+                        Portfolio</a>
+                    <p class="text-gray-400">
+                        Creating beautiful digital experiences that inspire and engage audiences.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#work" class="text-gray-400 hover:text-white transition-colors">Work</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Web Development</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Brand Identity</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Digital Strategy</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-dark-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Ronald Kiplimo. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                    document.getElementById('menu-toggle').querySelector('i').classList.remove('fa-times');
+                    document.getElementById('menu-toggle').querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('whatsapp-form');
+
+        // Create message container for feedback
+        const createMessageElement = () => {
+            let messageDiv = document.getElementById('form-message');
+            if (!messageDiv) {
+                messageDiv = document.createElement('div');
+                messageDiv.id = 'form-message';
+                messageDiv.className = 'mt-4 p-4 rounded-lg text-center transition-all duration-300';
+                contactForm.appendChild(messageDiv);
+            }
+            return messageDiv;
+        };
+
+        // Show message to user
+        const showMessage = (message, isSuccess) => {
+            const messageDiv = createMessageElement();
+            messageDiv.textContent = message;
+            messageDiv.className = `mt-4 p-4 rounded-lg text-center transition-all duration-300 ${isSuccess
+                ? 'bg-green-100 text-green-800 border border-green-300'
+                : 'bg-red-100 text-red-800 border border-red-300'
+                }`;
+            messageDiv.style.display = 'block';
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                    messageDiv.style.opacity = '1';
+                }, 300);
+            }, 5000);
+        };
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
+
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+
+            // Create URL encoded data for Netlify
+            const urlEncodedData = new URLSearchParams(formData).toString();
+            // Add form-name for Netlify
+            const body = new URLSearchParams({
+                "form-name": "contact",
+                ...formData
+            }).toString();
+
+            try {
+                // IMPORTANT: Replace this URL with your Render backend URL after deployment
+                // Example: 'https://ronald-portfolio-backend.onrender.com'
+                const BACKEND_URL = 'https://YOUR_RENDER_URL.onrender.com';
+
+                const response = await fetch(`${BACKEND_URL}/api/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                if (response.ok && data.success) {
+                    showMessage(data.message || 'Message sent successfully! I will get back to you soon.', true);
+                    contactForm.reset();
+                } else {
+                    showMessage(data.message || 'Failed to send message. Please try again.', false);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showMessage(
+                    'Failed to send message. Please try again or contact me directly at ronaldlimo23@gmail.com',
+                    false
+                );
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
+        });
+    </script>
+</body>
+
+</html>
