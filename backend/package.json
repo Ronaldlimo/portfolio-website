@@ -1,0 +1,28 @@
+{
+    "name": "ronald-portfolio-backend",
+    "version": "1.0.0",
+    "description": "Backend API for Ronald's portfolio contact form",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "portfolio",
+        "contact-form",
+        "express",
+        "api"
+    ],
+    "author": "Ronald Kiplimo",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "nodemailer": "^6.9.7",
+        "cors": "^2.8.5",
+        "body-parser": "^1.20.2",
+        "dotenv": "^16.3.1",
+        "express-rate-limit": "^7.1.5"
+    }
+}
